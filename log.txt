@@ -1,0 +1,239 @@
+####################################################################################################
+ai: Hello, thank you for calling Denny's Miami Beach. My name is Dasha, I’m your automated operator. Our special today is a Lumberjack's Dream Grand Slam Burger with cheddar cheese. Would you like to place an order for pickup? 
+[
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9346296787261963,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "delivery",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 4
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: i would like delivery please
+ai: Unfortunately we only offer pick up service through this channel at the moment. You can order delivery at fiveguys dot com, the Five Guys mobile app or through Uber Eats. Would you like to place an order for pick up now?
+[
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9844406843185425,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "yes",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: yes please
+ai: Great! What can I get for you today?
+[
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 7
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Data",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9622912406921387,
+    "likelihood": 1,
+    "location": {
+      "start": 11,
+      "end": 27
+    },
+    "factType": "food",
+    "data": {
+      "value": "burger milkshake"
+    }
+  },
+  {
+    "type": "Data",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9997324347496033,
+    "likelihood": 1,
+    "location": {
+      "start": 34,
+      "end": 38
+    },
+    "factType": "food",
+    "data": {
+      "value": "coke"
+    }
+  }
+]
+human: I'd like a burger milkshake and a coke.
+ai: Thank you! Let's confirm your order. You want to pick up 
+ai: burger milkshake
+ai: coke
+ai:  is that right?
+[
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9953308701515198,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "yes",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.7956176996231079,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "no",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 1
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 2,
+      "end": 2
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: yes that's right
+ai: Great, thank you. To finalize the order we need to sort out your payment. Your order total is $39 which means it is eligible for in-store payment. Would you like to pay in store or to give me your credit card details now?
+[
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.9708335995674133,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "pay in store",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "intent": null,
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: Yes please. I'll pay in store.
+ai: Your order will be ready in 15 minutes. We will cook the fries once you arrive, so that they are hot and fresh. Be sure to leave the bag open, otherwise the steam will turn your fries soggy. Once you’re in the store, head to the pickup counter and let us know you’re here. Anything else I can help you with? 
+[
+  {
+    "type": "Intent",
+    "skill": "ffbb61141a31d4a9990b44bd1f227762",
+    "weight": 0.7152934074401855,
+    "likelihood": 1,
+    "location": {
+      "start": -1,
+      "end": -1
+    },
+    "intent": "no",
+    "state": "positive",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "sentiment",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 0,
+      "end": 5
+    },
+    "intent": null,
+    "state": "negative",
+    "sentenceType": "statement"
+  },
+  {
+    "type": "Intent",
+    "skill": "common_phrases",
+    "weight": -1,
+    "likelihood": -1,
+    "location": {
+      "start": 4,
+      "end": 5
+    },
+    "intent": "thank_you",
+    "state": "positive",
+    "sentenceType": "statement"
+  }
+]
+human: no ma'am that's it thank you
+ai: Thank you so much for your order. Have a great day. Bye!
