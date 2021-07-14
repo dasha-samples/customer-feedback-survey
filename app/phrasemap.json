@@ -7,27 +7,90 @@
       "variation": 4
     },
 
-    "phrases": {
+    "phrases": 
+    {
+      "greeting": [
+        { "text": "Hi " },
+        { "id": "name", "type": "dynamic" },
+        { "text": " this is Dasha with Acme Credit Union. You visited one of our offices earlier today. I'd like to ask you a few questions about the experience. Do you have two minutes now? " }
+      ],
+
       "i_will_call_back": [{ "text": "Okay, I'll call you later. Bye!" }],
-      "hello": {
+      "hello": 
+      {
         "random": [
           [{ "text": "Hello" }],
           [{ "text": "Umm, hello?" }],
           [{ "text": "Are you there?" }]
         ]
       },
+
       "when_callback": [{ "text": "When can I call you back?" }],
-      "i_said": [{ "text": "I was saying" }],
-      "sorry_wont_call": [
-        { "text": "Sorry if I bothered you, have a nice day! Bye!" }
-      ],
-      "i_will_wait": {
+      "i_will_wait": 
+      {
         "random": [
           [{ "text": "Okay, I'll wait" }],
           [{ "text": "Sure, I'll wait" }],
           [{ "text": "Okay, no problem!" }]
         ]
       },
+
+      "question_1": 
+        {
+          "first": 
+          [{ "text": "Perfect, thank you. First question - how would you rate the bank employees with whom you interacted on the scale of 1 to 5." }],
+          "repeat": 
+              [{ "text": "I was saying. how would you rate the bank employees with whom you interacted on the scale of 1 to 5." }]
+        },
+
+        "question_1_n": 
+        {
+          "first": 
+          [{ "text": "I'm sorry to hear your experience was less than optimal. What could have been done better?" }],
+          "repeat": 
+              [{ "text": "I was saying. What about the experience could have gone better?" }]
+        },
+
+        "question_2": 
+        {
+          "first": 
+          [{ "text": "Great, thank you. Second question. How, on a scale of 1 to 5, did you feel about the effectiveness of the anti COVID measures at the bank location?" }],
+          "repeat": 
+              [{ "text": "I was saying. How would you rate our anti covid measures, on a scale of 1 to 5." }]
+        },
+
+        "question_2_n": 
+        {
+          "first": 
+          [{ "text": "So sorry to hear that you thought our measures are not sufficient. What do you think can be done better?" }],
+          "repeat": 
+              [{ "text": "I was saying. What do you feel could have been done better in terms of anti covid measures?" }]
+        },
+
+        "question_3": 
+        {
+          "first": 
+          [{ "text": "Perfect. And final question, how would you rate the overall experience, on a scale of 1 to 5?" }],
+          "repeat": 
+              [{ "text": "I was saying. On a scale of 1 to 5, how would you rate your overall experience?" }]
+        },
+
+        "question_3_n": 
+        {
+          "first": 
+          [{ "text": "I am so sorry to hear that you did not enjoy the experience. Can you please tell me what you feel could have been done better? " }],
+          "repeat": 
+              [{ "text": "I was saying. What can we have done better to make your experience more pleasant?" }]
+        },
+
+        "question_3_p": 
+        {
+          "first": 
+          [{ "text": "Thank you for such a high rating of your experience. Can you please share what especially stood out?" }],
+          "repeat": 
+              [{ "text": "I was saying. What stood out to you in making your experience this pleasant?"}]
+        },
+        
 
       "i_can_hear_you": [{ "text": "Yes, I hear you" }],
       "dont_understand": {
@@ -55,14 +118,22 @@
       "mhm": [{ "text": "Mgm..." }],
       "yes_i_am_a_robot": [
         {
-          "text": "Actually I am an advanced AI. Just don't tell my boss, please, or I'll be out of a job."
+          "text": "Actually I am an advanced AI. Just don't tell my boss or I'll be out of a job."
         }
       ],
       "is_that_all": [{ "text": "Is that all?" }],
       "repeat_question": [{ "text": "Can you repeat the question, please?" }]
     },
+    
     "types": {},
     "macros": {
+      "question_1": {},
+      "question_1_n": {},
+      "question_2": {},
+      "question_2_n": {},
+      "question_3": {},
+      "question_3_n": {},
+      "question_3_p": {},
       "i_will_call_back": {},
       "see_you_soon": {},
       "hello": {},

@@ -1,256 +1,144 @@
+import "commonReactions/all.dsl";
+
 context 
 {
     input phone: string;
-    food: {[x:string]:string;}[]?=null;
+    input name: string?=null; 
+
+    q1_rate: string = "";
+    q1_number: number?=null;
+    q2_rate: string = "";
+    q3_rate: string = "";
+    q1_feeback: string = "";
+    q2_feedback: string = "";
+    q3_feedback: string = "";
+    open_feedback: string = "";
+    call_back: string = "";
+
 }
 
-/**
-* External call declarations.
-external function send_order(food: {[x:string]:string;}): string;
-*/
-
-
-/**
-* Script.
-*/
+external function check_rating(rate: string): boolean;
 
 start node root 
 {
     do 
     {
         #connectSafe($phone);
-        #waitForSpeech(1000);
-        #sayText("Hi, this is Dasha, your AI server, at Acme Burgers Main Street location. Would you like to place an order for pick-up?"	);
+        #waitForSpeech(500);
+        #say("greeting", {name: $name} );
         wait *;
-    }    
-    transitions 
+    }   
+    transitions
     {
-        place_order: goto place_order on #messageHasIntent("yes");
-        can_help_then: goto can_help_then on #messageHasIntent("no");
+        question_1: goto question_1 on #messageHasIntent("yes");
+        all_back: goto call_back on #messageHasIntent("no");
     }
 }
 
-digression place_order
-{
-    conditions {on #messageHasIntent("place_order");}
-    do 
-    {
-        #sayText("Great! What can I get for you today?");
-        wait *;
-    }
-    transitions 
-    {
-       confirm_food_order: goto confirm_food_order on #messageHasData("food");
-    }
-    onexit
-    {
-        confirm_food_order: do {
-               set $food =  #messageGetData("food", { value: true });
-       }
-    }
 
-}
-
-node place_order
-{
-    do 
-    {
-        #sayText("Great! What can I get for you today?");
-        wait *;
-    }
-    transitions 
-    {
-       confirm_food_order: goto confirm_food_order on #messageHasData("food");
-    }
-    onexit
-    {
-        confirm_food_order: do {
-        set $food = #messageGetData("food");
-       }
-    }
-}
-
-node confirm_food_order
+node when_call_back
 {
     do
     {
-        #sayText("Perfect. Let me just make sure I got that right. You want ");
-        var food = #messageGetData("food");
-        for (var item in food)
-            {
-                #sayText(item.value ?? "and");
+        #say("when_callback");
+        wait *;
+    }
+    transitions
+    {
+       call_back: goto call_back;
+    } 
+    onexit
+    {
+        call_back: do 
+        {
+            set $call_back = #getMessageText();
+            // external call_back($call_back);
+        }
+    }
+} 
+
+
+node call_back
+{
+    do
+    {
+        #say("i_will_call_back");
+        exit;
+    }
+}
+
+node question_1
+{
+    do 
+    {
+        #say("question_1");
+        wait *;
+    }
+    transitions 
+    {
+        q1Evaluate: goto q1Evaluate on #messageHasData("rating");
+    }
+}
+
+node q1Evaluate 
+{
+    do
+    {
+        set $q1_rate =  #messageGetData("rating")[0]?.value??"";
+        var is_good_rating = external check_rating($q1_rate);
+        if (is_good_rating)
+        {
+            goto question_2;
+        }
+        else
+        {
+            goto question_1_n;
+        }
+    }
+    transitions
+    {
+        question_2: goto question_2;
+        question_1_n: goto question_1_n;
+    }
+
+}
+
+node question_1_n
+{
+    do 
+    {
+        #say("question_1_n");
+        wait *;
+    }
+    transitions
+    {
+        question_1_a: goto question_1_n on #messageHasData("rating");
+        question_2: goto question_2 on #messageHasData("rating");
+    }
+    onexit 
+        {
+           
+           
+        }
+}
+
+node question_2
+{
+    do 
+    {
+        #say("question_2_n");
+        wait *;
+    }
+ /**   transitions
+    {
+        question_2_n: goto question_2_n on #messageHasData("rating" >= 3);
+        question_3: goto question_2 on #messageHasData("rating");
+    }
+    onexit 
+        {
+            question_2_n: do 
+            { 
+                set q2_rate =  #messageGetData("rating", { value: true })[0]?.value??"";
             }
-        #sayText(" is that right?");
-        wait *;
-    }
-     transitions 
-    {
-        order_confirmed: goto payment on #messageHasIntent("yes");
-        repeat_order: goto repeat_order on #messageHasIntent("no");
-    }
-}
-
-node repeat_order
-{
-    do 
-    {
-        #sayText("Let's try this again. What can I get for you today?");
-        wait *;
-    }
-    transitions 
-    {
-       confirm_food_order: goto confirm_food_order on #messageHasData("food");
-    }
-    onexit
-    {
-        confirm_food_order: do {
-        set $food = #messageGetData("food");
-       }
-    }
-}
-
-node payment
-{
-    do
-    {
-        #sayText("Great. Will you be paying at the store?");
-        wait *;
-    }
-     transitions 
-    {
-        in_store: goto pay_in_store on #messageHasIntent("pay in store");
-        by_card: goto by_card on #messageHasIntent("pay by card");
-    }
-}
-
-node pay_in_store
-{
-    do
-    {
-        #sayText("Your order will be ready in 15 minutes. Once you’re in the store, head to the pickup counter. Anything else I can help you with? ");
-        wait *;
-    }
-     transitions 
-    {
-        can_help: goto can_help on #messageHasIntent("yes");
-        bye: goto success_bye on #messageHasIntent("no");
-    }
-}
-
-node by_card
-{
-    do
-    {
-        #sayText("I'm sorry, I'm just a demo and can't take your credit card number. If okay, would you please pay in store. Your order will be ready in 15 minutes. Anything else I can help you with? ");
-        wait *;
-    }
-     transitions 
-    {
-        can_help: goto can_help on #messageHasIntent("yes");
-        bye: goto success_bye on #messageHasIntent("no");
-    }
-}
-
-digression soda_on_tap 
-{
-    conditions {on #messageHasIntent("soda_on_tap");}
-    do 
-    {
-        #sayText("We’ve got Dr. Pepper, Coke Zero, Raspberry Sprite and a mystery flavor. Will you be wanting a soda with your food?");
-        wait *;
-    }
-    transitions 
-    {
-        place_order: goto place_order on #messageHasIntent("yes");
-        can_help_then: goto can_help_then on #messageHasIntent("no");
-    }
-}
-
-digression food_available 
-{
-    conditions {on #messageHasIntent("food_available");}
-    do 
-    {
-        #sayText("We’ve got burgers, hot dogs, grilled cheese sandwiches, fries, milkshakes and soda pop. Would you like to order now?");
-        wait *;
-    }
-    transitions 
-    {
-        place_order: goto place_order on #messageHasIntent("yes");
-        can_help_then: goto can_help_then on #messageHasIntent("no");
-    }
-}
-
-digression delivery 
-{
-    conditions {on #messageHasIntent("delivery");}
-    do 
-    {
-        #sayText("Unfortunately we only offer pick up service through this channel at the moment. Would you like to place an order for pick up now?");
-        wait *;
-    }
-    transitions 
-    {
-        place_order: goto place_order on #messageHasIntent("yes");
-        can_help_then: goto no_dice_bye  on #messageHasIntent("no");
-    }
-}
-
-digression connect_me 
-{
-    conditions {on #messageHasIntent("connect_me");}
-    do 
-    {
-        #sayText("Certainly. Please hold, I will now transfer you. Good bye!");
-        #forward("79231017918");
-    }
-}
-
-node can_help_then 
-{
-    do
-    {
-        #sayText("How can I help you then?");
-        wait *;
-    }
-}
-
-node can_help
-{
-    do
-    {
-        #sayText("How can I help?");
-        wait *;
-    }
-}
-
-node success_bye 
-{
-    do 
-    {
-        #sayText("Thank you so much for your order. Have a great day. Bye!");
-        #disconnect();
-        exit;
-    }
-}
-
-digression bye 
-{
-    conditions { on #messageHasIntent("bye"); }
-    do 
-    {
-        #sayText("Thanks for your time. Have a great day. Bye!");
-        #disconnect();
-        exit;
-    }
-}
-
-node no_dice_bye 
-{
-    do 
-    {
-        #sayText("Sorry I couldn't help you today. Have a great day. Bye!");
-        #disconnect();
-        exit;
-    }
+        } */
 }

@@ -14,7 +14,8 @@
         "yep",
         "you got it",
         "I would",
-        "yeah", 
+        "yeah",
+        "that's right", 
         "I would"
       ],
       "excludes": [
@@ -37,70 +38,7 @@
         "no, I want it delivered"
       ]
     },
-    "place_order": 
-    {
-      "includes": [
-        "I want to place an order",
-        "I want to pick up some food",
-        "Can I get some food?",
-        "order",
-        "food",
-        "I want to place an order for pick up",
-        "I'd like to pick up some food",
-        "can I pick up some food", 
-        "I'd like to order a (burger)[food], (grilled cheese)[food], (fries)[food] and a (milkshake)[food]",
-        "can I get a (burger)[food], (grilled cheese)[food], (fries)[food] and a (milkshake)[food] please",
-        "I'd like to order a (burger)[food], (fries)[food] and a (milkshake)[food]",
-        "can I get a (burger)[food], some (fries)[food] and a (soda)[food]?",
-        "I want a (burger)[food], (fries)[food] and a (soda)[food]",
-        "I would like a (hot dog)[food], (milkshake)[food] and a (soda)[food]"
-      ]
-      },
-    "delivery": {
-      "includes": [
-        "do you deliver",
-        "deliver",
-        "delivery"
-      ]
-    },
-    "connect_me": {
-      "includes": [
-        "I want to speak to someone in the store",
-        "connect me to someone in store",
-        "I placed an order earlier, let me speak to someone in store",
-        "connect me",
-        "put me through to the store",
-        "put me through",
-        "connect"
-      ]
-    },
-    "soda_on_tap": {
-      "includes": [
-        "what soda do you have?",
-        "what sodas do you have on tap?",
-        "can I get a soda?",
-        "what about soda",
-        "soda?"
-      ]
-    },
-    "food_available": {
-      "includes": [
-        "what food do you have?",
-        "what are the menu options?",
-        "what can I get?",
-        "what's on the menu",
-        "menu"
-      ]
-    },
-    "toppings": {
-      "includes": [
-        "what toppings?",
-        "toppings?",
-        "what toppings do you have?",
-        "do you have topping options?",
-        "what are the topping options?"
-      ]
-    },
+
     "bye": {
       "includes": [
         "bye",
@@ -113,71 +51,57 @@
         "peace out boo",
         "peace"
       ]
-    },
-    "pay in store": {
-      "includes": [
-        "pay in store",
-        "I'll pay in store",
-        "I'd like to pay in store",
-        "in store, please",
-        "I'll pay when I get there",
-        "yeah, in store is fine",
-        "when I pick it up",
-        "in store"
-      ]
-    },
-    "pay by card": {
-      "includes": [
-        "by card",
-        "now is fine",
-        "I'll pay with my card",
-        "card"
-      ]
     }
   },
  
   "entities": 
   {
-    "food": 
+    "rating": 
     {
-      "open_set": true,
+      "open_set": false,
       "values": [
         {
-          "value": "burger",
-          "synonyms": ["burger", "hamburger", "a burger", "a hamburger", "a tasty hamburger"]
+          "value": "1",
+          "synonyms": ["1", "one", "zero", "horrible", "worst ever", "the worst", "awful", "horrid", "despicable", "detestable", "very bad"]
         },
         {
-          "value": "fries",
-          "synonyms": ["fries", "some fries", "french fries", "delicious fries"]
+          "value": "2",
+          "synonyms": ["2", "two", "bad", "quite bad", "pretty bad", "not good", "crappy"]
         },
         {
-          "value": "milkshake",
-          "synonyms": ["milkshake", "shake", "a milkshake", "strawberry milkshake", "a tasty milkshake"]
+          "value": "3",
+          "synonyms": ["3", "three", "alright", "okay", "just okay"]
         },
         {
-          "value": "hot dog",
-          "synonyms": ["hot dog", "french dog", "a hot dog", "a french dog", "big dog"]
+          "value": "4",
+          "synonyms": ["4", "four", "good", "pretty good", "quite good", "good enough"]
         },
         {
-          "value": "grilled cheese",
-          "synonyms": ["grilled cheese", "cheese sandwich", "grilled cheese sandwich", "a grilled cheese sandwich", "a cheese sandwich"]
-        },
-        {
-          "value": "coke",
-          "synonyms": ["soda", "coke", "a soda", "a coke"]
+          "value": "5",
+          "synonyms": ["5", "five", "amazing", "incrdible", "just grand", "perfct", "wondrful", "very good"]
         }
       ],
       "includes": [
-        "(burger)[food], (fries)[food] and a (milkshake)[food]",
-        "(burger)[food], (fries)[food] and a (coke)[food]",
-        "(grilled cheese)[food], (fries)[food] and a (milkshake)[food]",
-        "(grilled cheese)[food], (fries)[food] and a (milkshake)[food]",
-        "(hot dog)[food], (fries)[food] and a (milkshake)[food]",
-        "(hot dog)[food], (fries)[food] and a (coke)[food]",
-        "I'd like a (burger)[food], (fries)[food] and a (milkshake)[food]",
-        "I'd like a (burger)[food], (fries)[food] and a (coke)[food]",
-        "I'd like   (grilled cheese)[food], (fries)[food] and a (milkshake)[food]",
-        "I'd like a (grilled cheese)[food], (fries)[food] and a (milkshake)[food]"
+        "I would say it was (1)[rating]",
+        "I would say it was (2)[rating]",
+        "I would say it was (3)[rating]",
+        "I would say it was (4)[rating]",
+        "I would say it was (5)[rating]",
+        "(1)[rating]",
+        "(2)[rating]",
+        "(3)[rating]",
+        "(4)[rating]",
+        "(5)[rating]",
+        "I had an (1)[rating] experience",
+        "I had an (2)[rating] experience",
+        "I had an (3)[rating] experience",
+        "I had an (4)[rating] experience",
+        "I had an (5)[rating] experience",
+        "I'll give you a (1)[rating]",
+        "I'll give you a (2)[rating]",
+        "I'll give you a (3)[rating]",
+        "I'll give you a (4)[rating]",
+        "I'll give you a (5)[rating]"
       ]
     }
   }
