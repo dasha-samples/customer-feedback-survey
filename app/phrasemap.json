@@ -1,5 +1,6 @@
 {
-  "default": {
+  "default": 
+  {
     "voiceInfo": {
       "lang": "en-US",
       "speaker": "V2",
@@ -9,11 +10,30 @@
 
     "phrases": 
     {
-      "greeting": [
+      "greeting": 
+      {
+        "first":
+      [
         { "text": "Hi " },
         { "id": "name", "type": "dynamic" },
         { "text": " this is Dasha with Acme Credit Union. You visited one of our offices earlier today. I'd like to ask you a few questions about the experience. Do you have two minutes now? " }
       ],
+      "repeat":
+      [
+        {"text": "I was just saying, do you have two minutes to answer a few questions " },
+        {"id": "name", "type": "dynamic" },
+        { "text": "? This will help ACME serve you better." }
+        ]
+    },
+
+      "question_1": 
+      {
+        "first": 
+        [{ "text": "Perfect, thank you. First question. How would you rate the bank employees with whom you interacted? Please use the scale of 1 to 5." }],
+        "repeat": 
+            [{ "text": "I was saying. How would you rate the bank employees with whom you interacted. Please rate as 1 to 5." }]
+      },
+
 
       "i_will_call_back": [{ "text": "Okay, I'll call you later. Bye!" }],
       "hello": 
@@ -35,13 +55,6 @@
         ]
       },
 
-      "question_1": 
-        {
-          "first": 
-          [{ "text": "Perfect, thank you. First question - how would you rate the bank employees with whom you interacted on the scale of 1 to 5." }],
-          "repeat": 
-              [{ "text": "I was saying. how would you rate the bank employees with whom you interacted on the scale of 1 to 5." }]
-        },
 
         "question_1_n": 
         {
@@ -54,9 +67,9 @@
         "question_2": 
         {
           "first": 
-          [{ "text": "Great, thank you. Second question. How, on a scale of 1 to 5, did you feel about the effectiveness of the anti COVID measures at the bank location?" }],
+          [{ "text": "Thank you. Next question. On a scale of 1 to 5; how did you feel about the effectiveness of the anti COVID measures at the bank location?" }],
           "repeat": 
-              [{ "text": "I was saying. How would you rate our anti covid measures, on a scale of 1 to 5." }]
+              [{ "text": "I was saying. How would you rate our anti covid measures. On a scale of 1 to 5." }]
         },
 
         "question_2_n": 
@@ -70,7 +83,7 @@
         "question_3": 
         {
           "first": 
-          [{ "text": "Perfect. And final question, how would you rate the overall experience, on a scale of 1 to 5?" }],
+          [{ "text": "Thank you. And final question, how would you rate the overall experience, on a scale of 1 to 5?" }],
           "repeat": 
               [{ "text": "I was saying. On a scale of 1 to 5, how would you rate your overall experience?" }]
         },
@@ -90,7 +103,30 @@
           "repeat": 
               [{ "text": "I was saying. What stood out to you in making your experience this pleasant?"}]
         },
-        
+
+        "final_q": 
+        {
+          "first": 
+          [{ "text": "Thank you so much. Anything else we should make note of?" }],
+          "repeat": 
+              [{ "text": "I was saying. Anything else we should make note of?"}]
+        },
+
+        "final_bye": 
+        {
+          "first": 
+          [{ "text": "Thank you so much for your time and for remaining a loyal ACME customer! Your feedback will help us serve you better. Bye!   " }],
+          "repeat": 
+              [{ "text": "I was saying. Anything else we should make note of?"}]
+        },
+
+        "transition": 
+        {
+          "first": 
+          [{ "text": "I'm so sorry you were unsatisfied. I will be sure to mark your feedback as escalated." }],
+          "repeat": 
+              [{ "text": "I was saying. What stood out to you in making your experience this pleasant?"}]
+        },
 
       "i_can_hear_you": [{ "text": "Yes, I hear you" }],
       "dont_understand": {
@@ -126,14 +162,18 @@
     },
     
     "types": {},
-    "macros": {
+    "macros": 
+    {
       "question_1": {},
+      "transition": {},
       "question_1_n": {},
       "question_2": {},
       "question_2_n": {},
       "question_3": {},
       "question_3_n": {},
       "question_3_p": {},
+      "final_q": {},
+      "final_bye": {},
       "i_will_call_back": {},
       "see_you_soon": {},
       "hello": {},
@@ -149,6 +189,7 @@
       "yes_i_am_a_robot": {},
       "is_that_all": {},
       "greeting": {},
+      "name": {},
       "will_help": {},
       "how_much": {},
       "confirm_food_order": {},
