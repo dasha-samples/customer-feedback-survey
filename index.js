@@ -1,28 +1,6 @@
 const dasha = require("@dasha.ai/sdk");
 const fs = require("fs");
 
-//initializing data collection variables 
-const question_1_rating = "";
-const question_2_rating = "";
-const question_3_rating = "";
-const question_1_feedback = "";
-const question_2_feedback = "";
-const question_3_feedback = "";
-const call_back = "";
-
-function testRating(rating) 
-{
-  const ratingNum = Number.parseInt(rating);
-  if (ratingNum === 4 || ratingNum === 5)
-  {
-      return true;
-  }
-  else if (ratingNum >0 && ratingNum <= 3)
-  {
-      return false;
-  }
-      return "Error - rating did not convert to number or converted to a number > 5 or < 1";
-}
 
 async function main() 
 {
@@ -35,20 +13,12 @@ async function main()
 
   app.ttsDispatcher = () => "dasha";
 
-  app.setExternal("check_rating", (args, conv) => 
+  app.setExternal("console_log", (args, conv) => 
   {
-    const isGood = testRating(q1_rate);
-    return isGood;
+    console.log(args);
   }); 
 
-  console.log(isGood);
-
   await app.start();
-
-  // collecting data from the conversation for use in external services 
-
-  // app.setExternal("call_back", (args, conv) => { call_back = args});
-  // console.log(call_back);
 
   const conv = app.createConversation({ phone: process.argv[2] ?? "" });
 
